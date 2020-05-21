@@ -14,6 +14,8 @@
 		7711AA3B2476992400A15C82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7711AA3A2476992400A15C82 /* Assets.xcassets */; };
 		7711AA3E2476992400A15C82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7711AA3C2476992400A15C82 /* LaunchScreen.storyboard */; };
 		7711AA4724769F3200A15C82 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7711AA4624769F3200A15C82 /* WebKit.framework */; };
+		7711AA492476B31D00A15C82 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7711AA482476B31D00A15C82 /* UserSettings.swift */; };
+		7711AA4B2476C53C00A15C82 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7711AA4A2476C53B00A15C82 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		7711AA3D2476992400A15C82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7711AA3F2476992400A15C82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7711AA4624769F3200A15C82 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		7711AA482476B31D00A15C82 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		7711AA4A2476C53B00A15C82 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				7711AA312476992400A15C82 /* AppDelegate.swift */,
 				7711AA332476992400A15C82 /* SceneDelegate.swift */,
 				7711AA352476992400A15C82 /* ViewController.swift */,
+				7711AA4A2476C53B00A15C82 /* TableViewController.swift */,
+				7711AA482476B31D00A15C82 /* UserSettings.swift */,
 				7711AA372476992400A15C82 /* Main.storyboard */,
 				7711AA3A2476992400A15C82 /* Assets.xcassets */,
 				7711AA3C2476992400A15C82 /* LaunchScreen.storyboard */,
@@ -152,6 +158,8 @@
 			files = (
 				7711AA362476992400A15C82 /* ViewController.swift in Sources */,
 				7711AA322476992400A15C82 /* AppDelegate.swift in Sources */,
+				7711AA492476B31D00A15C82 /* UserSettings.swift in Sources */,
+				7711AA4B2476C53C00A15C82 /* TableViewController.swift in Sources */,
 				7711AA342476992400A15C82 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
