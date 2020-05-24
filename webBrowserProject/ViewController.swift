@@ -9,51 +9,26 @@
 import UIKit
 import WebKit
 
-var myNotes: [URL] = []
-
-protocol viewControllerDelegate {
+protocol ViewControllerDelegate: class {
     func pressedCell(url: String)
 }
 
-class ViewController: UIViewController, WKUIDelegate, viewControllerDelegate {
-    
+class ViewController: UIViewController {
     
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var searchTextField: UITextField!
-    
-    @IBAction func searchAction(_ sender: Any) {
-        textFieldShouldReturn(searchTextField)
-        
-    }
-    
-    @IBAction func goBackAction(_ sender: Any) {
-        if webView.canGoBack {
-            webView.goBack()
-        }
-    }
-    
-    @IBAction func goForwardAction(_ sender: Any) {
-        if webView.canGoForward {
-            webView.goForward()
-        }
-    }
-    
-    @IBAction func addButtonAction(_ sender: Any) {
-        if let curUrl = webView.url {
-            myNotes.append(curUrl)
-            UserSettings.shared.urlArray.append(curUrl.absoluteString)
-        }
-    }
-    
-    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        myNotes = UserSettings.shared.urlArray.compactMap { URL(string: $0) }
+        setup()
+    }
+    
+    private func setup() {
+        webView.navigationDelegate = self
     }
     
     //MARK: - Navigation
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "segueNotes" else { return }
         guard let destination = segue.destination as? TableViewController else { return }
@@ -63,6 +38,7 @@ class ViewController: UIViewController, WKUIDelegate, viewControllerDelegate {
     
     //MARK: - Func for searching
     func textFieldShouldReturn(_ textField: UITextField) {
+        textField.resignFirstResponder()
         
         guard let urlString = textField.text else { return }
         
@@ -79,6 +55,7 @@ class ViewController: UIViewController, WKUIDelegate, viewControllerDelegate {
     func loadUrl(_ urlString: String) {
         guard let url = URL(string: urlString) else { return }
         let urlRequest = URLRequest(url: url)
+        activityIndicator.startAnimating()
         webView.load(urlRequest)
     }
     
@@ -92,12 +69,43 @@ class ViewController: UIViewController, WKUIDelegate, viewControllerDelegate {
         guard let url = URL(string: "https://www.google.com/search?q=" + searchString) else { return }
         
         let urlRequest = URLRequest(url: url)
+        activityIndicator.startAnimating()
         webView.load(urlRequest)
     }
     
-    func pressedCell(url: String) {
-        webView.load(URLRequest(url: URL(string: url)!))
+    @IBAction func searchAction(_ sender: Any) {
+        textFieldShouldReturn(searchTextField)
+    }
+    
+    @IBAction func goBackAction(_ sender: Any) {
+        if webView.canGoBack {
+            webView.goBack()
+        }
+    }
+    
+    @IBAction func goForwardAction(_ sender: Any) {
+        if webView.canGoForward {
+            webView.goForward()
+        }
+    }
+    
+    @IBAction func addButtonAction(_ sender: Any) {
+        if let curUrl = webView.url {
+            UserSettings.shared.urlArray.append(curUrl.absoluteString)
+        }
     }
     
 }
 
+extension ViewController: ViewControllerDelegate {
+    func pressedCell(url: String) {
+        activityIndicator.startAnimating()
+        webView.load(URLRequest(url: URL(string: url)!))
+    }
+}
+
+extension ViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        activityIndicator.stopAnimating()
+    }
+}

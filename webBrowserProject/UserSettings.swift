@@ -10,19 +10,20 @@ import Foundation
 
 class UserSettings {
     
-    private init() {}
-    
     static let shared = UserSettings()
-    
+    private let urlArrayKey = "urlArray"
     private let  defaults = UserDefaults.standard
     
     var urlArray: [String] {
         get {
-            return defaults.stringArray(forKey: "urlArray") ?? []
+            return defaults.stringArray(forKey: urlArrayKey) ?? []
         }
         set {
-            defaults.set(newValue, forKey: "urlArray")
+            defaults.set(newValue, forKey: urlArrayKey)
         }
     }
+    
+    private init() {}
+    
     
 }

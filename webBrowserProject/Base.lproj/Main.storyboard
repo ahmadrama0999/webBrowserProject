@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -92,17 +92,23 @@
                                     <action selector="addButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X6X-tI-BVm"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Lzz-EN-JcC">
+                                <rect key="frame" x="169" y="361.5" width="37" height="37"/>
+                                <color key="color" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="5dY-Gf-fuB" firstAttribute="top" secondItem="LxY-g9-dwn" secondAttribute="bottom" constant="1" id="8Xo-nd-LVR"/>
                             <constraint firstItem="LfF-gh-VHq" firstAttribute="top" secondItem="D0A-oe-JxR" secondAttribute="bottom" constant="4" id="AO9-Fn-hDH"/>
                             <constraint firstItem="5dY-Gf-fuB" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="BaR-sC-MRI"/>
+                            <constraint firstItem="Lzz-EN-JcC" firstAttribute="centerY" secondItem="5dY-Gf-fuB" secondAttribute="centerY" id="DkX-tC-R0t"/>
                             <constraint firstItem="1ix-CI-Gqf" firstAttribute="leading" secondItem="LxY-g9-dwn" secondAttribute="trailing" constant="77" id="Gvu-vu-jDU"/>
                             <constraint firstItem="5dY-Gf-fuB" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="MP8-kb-JuU"/>
                             <constraint firstItem="LfF-gh-VHq" firstAttribute="leading" secondItem="CVs-Vd-2oU" secondAttribute="trailing" constant="66" id="OFe-wi-ePJ"/>
                             <constraint firstItem="1ix-CI-Gqf" firstAttribute="top" secondItem="QpZ-qD-ssP" secondAttribute="bottom" constant="4" id="SgE-Fh-0iH"/>
                             <constraint firstItem="QpZ-qD-ssP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="Tav-8k-9rH"/>
+                            <constraint firstItem="Lzz-EN-JcC" firstAttribute="centerX" secondItem="5dY-Gf-fuB" secondAttribute="centerX" id="VMy-M1-xaF"/>
                             <constraint firstItem="CVs-Vd-2oU" firstAttribute="top" secondItem="QpZ-qD-ssP" secondAttribute="bottom" constant="4" id="VRD-2p-tWN"/>
                             <constraint firstItem="LxY-g9-dwn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="WiV-Gl-YUH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LfF-gh-VHq" secondAttribute="trailing" constant="16" id="Xss-jA-bet"/>
@@ -121,6 +127,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="csR-YU-ws8"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="Lzz-EN-JcC" id="AVE-ZI-WGB"/>
                         <outlet property="searchTextField" destination="QpZ-qD-ssP" id="OEn-aw-Iwx"/>
                         <outlet property="webView" destination="5dY-Gf-fuB" id="IW2-MI-LGT"/>
                     </connections>
@@ -138,7 +145,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="jVO-U5-IsK" style="IBUITableViewCellStyleDefault" id="HbD-vT-Wwr">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="urlCell" textLabel="jVO-U5-IsK" style="IBUITableViewCellStyleDefault" id="HbD-vT-Wwr">
                                 <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HbD-vT-Wwr" id="lPJ-F7-HWC">
